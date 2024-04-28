@@ -41,6 +41,17 @@ namespace AdiveryUnity
             GetAdiveryClass().CallStatic("configure", GetAndroidApplication(), appId);
         }
 
+        public static void setUpGDPRDialog()
+        {
+            if (!IsAdiverySupported())
+            {
+                return;
+            }
+
+            AdiveryEventExecutor.Initialize();
+            GetAdiveryClass().CallStatic("setUpGDPRDialog", GetAndroidActivity());
+        }
+
         public static void SetLoggingEnabled(bool enabled)
         {
             if (!IsAdiverySupported())
@@ -69,7 +80,7 @@ namespace AdiveryUnity
             GetAdiveryClass().CallStatic("prepareRewardedAd", GetAndroidActivity(), placementId);
         }
 
-        internal static void AddListener(AdiveryListener listener)
+        public static void AddListener(AdiveryListener listener)
         {
             if (!IsAdiverySupported())
             {
